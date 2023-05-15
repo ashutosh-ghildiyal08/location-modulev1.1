@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/create-user-and-location-schema.xml
+
+#  - include:
+#      file: db/changelog/insert-data-location.xml
+
+  #  - include:
+  #      file: db/changelog/insert-data-users.xml
+
+#  - include:
+#      file: db/changelog/insert-data-location-user-mapping.xml
+
