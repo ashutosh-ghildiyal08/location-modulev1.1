@@ -23,7 +23,6 @@ public class UserListener {
     @Autowired
     ObjectTranslator objectTranslator;
 
-
     @JmsListener(destination = "user")
     public void consume(String str) throws JsonProcessingException {
         System.out.println(str);
@@ -63,7 +62,5 @@ public class UserListener {
                 System.out.println("Wrong action");
                 break;
         }
-
-
     }
 }

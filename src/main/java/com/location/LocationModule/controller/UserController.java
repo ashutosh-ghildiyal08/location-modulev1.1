@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
+@CrossOrigin(origins="http://localhost:3000/")
 public class UserController {
 
     @Autowired
@@ -20,21 +21,9 @@ public class UserController {
     @Autowired
     ObjectMapper mapper;
 
-    @JmsListener(destination = "demo")
-    public void consume(String message) throws JsonProcessingException {
 
-        //2. Convert JSON to List of Person objects
-        //Define Custom Type reference for List<Person> type
-        TypeReference<List<UserEntity>> mapType = new TypeReference<>() {};
-        List<UserEntity> jsonToPersonList = mapper.readValue(message, mapType);
-        for (UserEntity user: jsonToPersonList) {
-            System.out.println(user);
-        }
-        userService.addUsers(jsonToPersonList);
-
-    }
     @GetMapping("/users")
-    public List<UserEntity> getAllLocation() {
+    public List<UserEntity> getAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -43,6 +32,7 @@ public class UserController {
         userService.addUsers(userList);
         return "Users Saved";
     }
+
 
 
 

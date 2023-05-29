@@ -9,7 +9,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class AddLocationRequest {
-    private String loc_name;
-    private int loc_code;
+    private String locName;
+    private int locCode;
 
 }

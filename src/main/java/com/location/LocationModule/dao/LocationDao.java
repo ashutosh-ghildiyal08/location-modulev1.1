@@ -49,15 +49,14 @@ LocationEntity locationEntity = objectTranslator.translate(locationDto, Location
         locationRepository.deleteById(locationId);
     }
     public LocationDto updateLocation(LocationDto locationDto) {
-//        int locationId = locationDto.getId();
+
         LocationEntity locationEntity= objectTranslator.translate(locationDto, LocationEntity.class);
 
-        LocationEntity updatedLocationEntity = locationRepository.save(locationEntity);
-
-        LocationDto updatedLocationDto = objectTranslator.translate(updatedLocationEntity, LocationDto.class);
+        locationRepository.updateLocation(locationEntity.getId(), locationEntity.getLocCode(), locationEntity.getLocName());
+        LocationEntity updatedLocationEntity = locationRepository.findById(locationDto.getId()).get();
+                LocationDto updatedLocationDto = objectTranslator.translate(updatedLocationEntity, LocationDto.class);
         return updatedLocationDto;
-//        System.out.println(updatedLocation);
-//        return updatedLocation;
+
     }
 
 

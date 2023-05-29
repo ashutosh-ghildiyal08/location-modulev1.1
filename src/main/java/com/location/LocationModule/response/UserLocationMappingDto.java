@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class UserLocationMappingDto {
     private int id;
-    private int user_Id;
-    private int location_Id;
+    private int userId;
+    private int locationId;
 }

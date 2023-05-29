@@ -1,10 +1,12 @@
 package com.location.LocationModule.controller;
 
 
+import com.location.LocationModule.entity.UserEntity;
 import com.location.LocationModule.request.AddLocationRequest;
 import com.location.LocationModule.request.UpdateLocationRequest;
 import com.location.LocationModule.response.LocationDto;
 import com.location.LocationModule.response.LocationResponse;
+import com.location.LocationModule.response.UserDto;
 import com.location.LocationModule.response.UserLocationMappingDto;
 import com.location.LocationModule.service.LocationService;
 import com.location.LocationModule.service.UserLocationService;
@@ -16,7 +18,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 @RestController
+@CrossOrigin(origins="http://localhost:3000/")
 public class LocationController {
 
     @Autowired
@@ -71,12 +76,17 @@ public class LocationController {
     }
 
 
-    @PostMapping("/location/{userId}/{locationId}")
-    public ResponseEntity<UserLocationMappingDto> assignUser(@PathVariable int userId, @PathVariable int locationId ){
+    @PostMapping("/location/{locationId}/{userId}")
+    public ResponseEntity<UserLocationMappingDto> assignUser( @PathVariable int locationId, @PathVariable int userId){
         UserLocationMappingDto userLocationMappingDto = userLocationService.assignUser(userId,locationId);
        return new ResponseEntity<>(userLocationMappingDto, HttpStatus.CREATED);
     }
+    @GetMapping("/location/{locationId}/users")
+    public ResponseEntity<List<UserDto>> assignedUserList(@PathVariable int locationId) {
 
+        List<UserDto> list =  userLocationService.assignedUserList(locationId);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 
 
 

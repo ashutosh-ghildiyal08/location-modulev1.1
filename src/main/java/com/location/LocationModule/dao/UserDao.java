@@ -1,6 +1,7 @@
 package com.location.LocationModule.dao;
 
 
+import com.location.LocationModule.repository.UserLocationRepository;
 import com.location.LocationModule.repository.UserRepository;
 import com.location.LocationModule.response.UserDto;
 import com.location.LocationModule.translator.ObjectTranslator;
@@ -16,6 +17,8 @@ public class UserDao {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    UserLocationRepository userLocationRepository;
 
     public UserDto save(UserDto userDto) {
         UserEntity userEntity = objectTranslator.translate(userDto, UserEntity.class );
@@ -26,6 +29,7 @@ public class UserDao {
     }
 
     public void deleteById(int id) {
+        userLocationRepository.deleteAllByUserId(id);
         userRepository.deleteById(id);
     }
 }

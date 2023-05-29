@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class LocationResponse {
     private Integer id;
 
-    private String loc_name;
+    private String locName;
 
-    private String loc_code;
+    private String locCode;
 
 }

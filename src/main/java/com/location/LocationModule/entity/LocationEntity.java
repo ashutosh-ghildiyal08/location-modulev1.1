@@ -18,10 +18,10 @@ public class LocationEntity {
     private Integer id;
 
     @Column(name = "loc_name", nullable = false)
-    private String loc_name;
+    private String locName;
 
     @Column(name = "loc_code", nullable = false)
-    private String loc_code;
+    private String locCode;
 
     @ManyToMany(cascade =
             {

@@ -18,10 +18,10 @@ public class UserLocationMappingEntity {
     private Integer id;
 
     @Column(name = "user_Id", nullable = false, unique = true)
-    private int user_Id;
+    private int userId;
 
     @Column(name = "location_Id", nullable = false, unique = true)
-    private int location_Id;
+    private int locationId;
 
 
 }
