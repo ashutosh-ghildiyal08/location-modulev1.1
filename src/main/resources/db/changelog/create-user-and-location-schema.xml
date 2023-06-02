@@ -30,7 +30,7 @@
       </column>
 
     </createTable>
-    <createTable tableName="location_user_mapping">
+    <createTable tableName="user_location_mapping">
       <column name="id" type="int" autoIncrement="true">
         <constraints nullable="false" primaryKey="true" />
       </column>
@@ -42,10 +42,10 @@
       </column>
     </createTable>
 
-    <addForeignKeyConstraint baseTableName="location_user_mapping" baseColumnNames="location_id"
+    <addForeignKeyConstraint baseTableName="user_location_mapping" baseColumnNames="location_id"
                              constraintName="location_fk"
                              referencedTableName="location" referencedColumnNames="id"/>
-    <addForeignKeyConstraint baseTableName="location_user_mapping" baseColumnNames="user_id"
+    <addForeignKeyConstraint baseTableName="user_location_mapping" baseColumnNames="user_id"
                              constraintName="user_fk"
                              referencedTableName="users" referencedColumnNames="id"/>
   </changeSet>

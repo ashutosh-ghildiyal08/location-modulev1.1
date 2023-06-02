@@ -46,4 +46,12 @@ public class UserLocationDao {
 
         return userDtoList;
     }
+
+    public UserLocationMappingDto deleteByUserIdAndLocationId(int userId, int locationId) {
+        UserLocationMappingEntity userLocationMapping = userLocationRepository.findByUserIdAndLocationId(userId,locationId);
+        UserLocationMappingDto responseUserLocationMappingDto = objectTranslator
+                .translate(userLocationMapping, UserLocationMappingDto.class);
+        userLocationRepository.deleteByUserIdAndLocationId(userId, locationId);
+        return responseUserLocationMappingDto;
+    }
 }

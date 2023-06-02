@@ -32,7 +32,7 @@ public class LocationEntity {
             },
             fetch= FetchType.EAGER)
 
-    @JoinTable(name = "location_user_mapping",
+    @JoinTable(name = "user_location_mapping",
             joinColumns = @JoinColumn(name = "location_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<UserEntity> userList;

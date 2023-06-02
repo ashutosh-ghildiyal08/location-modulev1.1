@@ -31,5 +31,9 @@ public UserLocationMappingDto assignUser(int userId, int locationId){
     public List<UserDto> assignedUserList(int locationId) {
         return userLocationDao.assignedUserList(locationId);
     }
+
+    public UserLocationMappingDto unAssignUser(int userId, int locationId) {
+         return userLocationDao.deleteByUserIdAndLocationId(userId,locationId);
+    }
 }
 

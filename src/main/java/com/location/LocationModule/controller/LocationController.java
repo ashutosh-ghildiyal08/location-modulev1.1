@@ -76,10 +76,15 @@ public class LocationController {
     }
 
 
-    @PostMapping("/location/{locationId}/{userId}")
+    @PostMapping("/location/assign/{locationId}/{userId}")
     public ResponseEntity<UserLocationMappingDto> assignUser( @PathVariable int locationId, @PathVariable int userId){
         UserLocationMappingDto userLocationMappingDto = userLocationService.assignUser(userId,locationId);
        return new ResponseEntity<>(userLocationMappingDto, HttpStatus.CREATED);
+    }
+    @PostMapping("/location/unAssign/{locationId}/{userId}")
+    public ResponseEntity<UserLocationMappingDto> unAssignUser( @PathVariable int locationId, @PathVariable int userId){
+        UserLocationMappingDto userLocationMappingDto = userLocationService.unAssignUser(userId,locationId);
+        return new ResponseEntity<>(userLocationMappingDto,HttpStatus.CREATED);
     }
     @GetMapping("/location/{locationId}/users")
     public ResponseEntity<List<UserDto>> assignedUserList(@PathVariable int locationId) {
